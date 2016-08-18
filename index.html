@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+    $.ajax({
+        type : "GET",
+
+        url: "http://mp4snipper-us.peel-ci.com/links/0G2VxhV_gXM",
+
+        data: $(this).serializeArray(),
+
+
+        success: function(data){
+        	console.log(data.high);
+                    var video = $('#divVideo video')[0];
+                    video.src = data.high;
+                    video.load();
+                    video.play();
+                },
+        error :  function(errorThrown ){
+                    console.log( errorThrown );
+        },
+    });
+        
+});
+});
+
+</script>
+</head>
+<body>
+
+<div id="divVideo">
+  <video id="videoID" controls>
+  </video>
+</div>
+<button>Get External Content</button>
+
+</body>
+</html>
